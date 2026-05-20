@@ -1,0 +1,136 @@
+Build a premium modern landing page for an AI WhatsApp sales system.
+
+The website should feel psychological, premium, persuasive, and conversion-focused.
+
+The goal is NOT to make the system feel like a chatbot.
+
+The goal is to make it feel like an intelligent sales employee that understands customers during conversations and helps businesses reduce lost sales opportunities.
+
+Style:
+
+* Dark premium startup aesthetic
+* Minimal but emotionally persuasive
+* Cinematic modern feeling
+* Smooth animations
+* Strong typography
+* Luxury SaaS design
+* Mobile responsive
+* Apple + Stripe inspired clean layout
+* High contrast sections
+* Spacious layout
+* Professional conversational AI branding
+
+Main Message:
+Businesses are not losing customers because of bad products.
+They are losing them during conversations.
+
+The website should emotionally communicate the hidden problem of customer drop-off during chats and position the AI system as the solution.
+
+Hero Section:
+Large emotional headline:
+"You're Not Losing Customers Because of Your Product."
+
+Second line:
+"You're Losing Them During The Conversation."
+
+Subheadline:
+Most businesses think lost sales happen because of pricing or competition.
+But many customers disappear while already interested and actively chatting.
+
+The problem is often not the product itself...
+but how the conversation is handled before the buying decision.
+
+Primary CTA:
+"Book a Demo"
+
+Secondary CTA:
+"Watch AI Conversation"
+
+Hero visual idea:
+Modern WhatsApp-style AI sales conversation UI.
+
+Problem Section:
+Explain that businesses often lose customers silently during conversations:
+
+* Interested customers disappear
+* Conversations lose momentum
+* Customers hesitate
+* Weak communication kills buying intent
+* Slow or unfocused replies reduce conversions
+
+Important emotional line:
+"The most dangerous sales loss is the one you don't notice while the conversation is happening."
+
+Solution Section:
+Introduce:
+"AI WhatsApp Closing System"
+
+Explain that the system:
+
+* Understands customer intent
+* Adapts communication style naturally
+* Keeps customer engagement alive
+* Guides conversations toward purchase decisions
+* Reduces customer hesitation
+* Handles conversations like a trained sales assistant
+
+Important positioning:
+This is not just fast replies.
+This is intelligent sales communication inside WhatsApp conversations.
+
+Demo Section:
+Include a premium video demo showcase area.
+The demo should feel like a real sales conversation, not technical software.
+
+Benefits Section:
+Create premium cards with:
+
+* Higher conversion rates
+* Better customer engagement
+* Faster response handling
+* Reduced customer drop-off
+* More stable sales flow
+* Better customer experience
+
+Psychology Section:
+Explain that different customers require different communication styles:
+
+* Some customers want short answers
+* Others need reassurance
+* Some hesitate emotionally
+* Others need direct recommendations
+
+The AI adapts dynamically during conversations.
+
+Trust Section:
+Mention:
+"Tested through 200+ simulated customer conversations before launch."
+
+Guarantee Section:
+Include a strong guarantee:
+"7-Day Full Refund Guarantee"
+
+Explain:
+If the system does not perform well for your business or if you notice weak conversation quality, you can request a full refund.
+
+Final CTA Section:
+Large emotional closing headline:
+"Stop Losing Interested Customers During Conversations."
+
+Subheadline:
+Turn WhatsApp conversations into a more intelligent and stable sales channel.
+
+CTA Button:
+"Contact Us Today"
+
+Include WhatsApp contact area:
++31 6 87963541
+
+Overall website feeling:
+The visitor should feel:
+
+* This is modern
+* This feels intelligent
+* This understands customer psychology
+* This is built for sales, not just automation
+* This is different from normal chatbots
