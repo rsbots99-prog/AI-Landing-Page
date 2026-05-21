@@ -64,6 +64,7 @@ export default function DemoSection() {
           initial={{ opacity: 0, scale: 0.97 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          style={{ maxWidth: "1000px", width: "100%", margin: "0 auto" }}
           className="relative rounded-3xl overflow-hidden border border-white/10 bg-black cursor-pointer group shadow-[0_0_80px_-20px_hsl(142,69%,49%,0.3)]"
           onClick={togglePlay}
           data-testid="demo-video-player"
