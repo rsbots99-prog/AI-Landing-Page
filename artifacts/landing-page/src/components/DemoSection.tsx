@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { Play, Pause, Maximize2 } from "lucide-react";
-import demoVideo from "@assets/WhatsApp_Video_2026-05-21_at_9.55.39_PM_1779393535292.mp4";
+import demoVideo from "@assets/WhatsApp_Video_2026-05-21_at_10.26.31_PM_1779395520175.mp4";
 
 export default function DemoSection() {
   const sectionRef = useRef(null);
