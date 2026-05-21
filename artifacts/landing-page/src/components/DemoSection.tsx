@@ -1,16 +1,19 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
-import { Play, Pause } from "lucide-react";
+import { Play, Pause, Maximize2 } from "lucide-react";
 import demoVideo from "@assets/WhatsApp_Video_2026-05-21_at_4.24.01_PM_1779373701414.mp4";
 
 export default function DemoSection() {
   const sectionRef = useRef(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [playing, setPlaying] = useState(false);
 
-  const togglePlay = () => {
+  const togglePlay = (e: React.MouseEvent) => {
+    // Don't toggle play when clicking fullscreen button
+    if ((e.target as HTMLElement).closest("[data-fullscreen]")) return;
     if (!videoRef.current) return;
     if (playing) {
       videoRef.current.pause();
@@ -18,6 +21,17 @@ export default function DemoSection() {
     } else {
       videoRef.current.play();
       setPlaying(true);
+    }
+  };
+
+  const openFullscreen = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const el = videoRef.current;
+    if (!el) return;
+    if (el.requestFullscreen) {
+      el.requestFullscreen();
+    } else if ((el as HTMLVideoElement & { webkitEnterFullscreen?: () => void }).webkitEnterFullscreen) {
+      (el as HTMLVideoElement & { webkitEnterFullscreen?: () => void }).webkitEnterFullscreen!();
     }
   };
 
@@ -46,6 +60,7 @@ export default function DemoSection() {
         </motion.div>
 
         <motion.div
+          ref={containerRef}
           initial={{ opacity: 0, scale: 0.97 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
@@ -61,7 +76,7 @@ export default function DemoSection() {
             onEnded={() => setPlaying(false)}
           />
 
-          {/* Play/Pause overlay — fades out when playing, always visible when paused */}
+          {/* Play/Pause overlay */}
           <div
             className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
               playing ? "opacity-0 group-hover:opacity-100" : "opacity-100"
@@ -79,6 +94,21 @@ export default function DemoSection() {
                 <Play className="w-8 h-8 text-black fill-black ml-1" />
               )}
             </motion.div>
+          </div>
+
+          {/* Fullscreen button — always visible on hover */}
+          <div
+            className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+            data-fullscreen
+          >
+            <button
+              onClick={openFullscreen}
+              data-testid="demo-fullscreen-button"
+              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-black/60 hover:bg-black/80 border border-white/10 text-white text-xs font-medium backdrop-blur-sm transition-colors"
+            >
+              <Maximize2 className="w-4 h-4" />
+              Fullscreen
+            </button>
           </div>
         </motion.div>
 
