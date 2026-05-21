@@ -1,15 +1,28 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { useInView } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, Pause } from "lucide-react";
+import demoVideo from "@assets/WhatsApp_Video_2026-05-21_at_4.24.01_PM_1779373701414.mp4";
 
 export default function DemoSection() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-  const [hovered, setHovered] = useState(false);
+  const sectionRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const [playing, setPlaying] = useState(false);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+    if (playing) {
+      videoRef.current.pause();
+      setPlaying(false);
+    } else {
+      videoRef.current.play();
+      setPlaying(true);
+    }
+  };
 
   return (
-    <section className="py-24 px-4 relative overflow-hidden" ref={ref}>
+    <section className="py-24 px-4 relative overflow-hidden" ref={sectionRef}>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_100%,_hsl(142,69%,49%,0.05),_transparent_50%)]" />
       <div className="container mx-auto max-w-5xl relative">
         <motion.div
@@ -36,44 +49,36 @@ export default function DemoSection() {
           initial={{ opacity: 0, scale: 0.97 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="relative rounded-3xl overflow-hidden border border-white/10 aspect-video bg-gradient-to-br from-[#0d1f17] to-[#080d0a] cursor-pointer group"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
+          className="relative rounded-3xl overflow-hidden border border-white/10 bg-black cursor-pointer group shadow-[0_0_80px_-20px_hsl(142,69%,49%,0.3)]"
+          onClick={togglePlay}
           data-testid="demo-video-player"
         >
-          {/* Subtle grid pattern */}
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: `linear-gradient(hsl(142,69%,49%) 1px, transparent 1px), linear-gradient(90deg, hsl(142,69%,49%) 1px, transparent 1px)`,
-              backgroundSize: "60px 60px",
-            }}
+          <video
+            ref={videoRef}
+            src={demoVideo}
+            className="w-full h-full object-contain"
+            playsInline
+            onEnded={() => setPlaying(false)}
           />
 
-          {/* Glow */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_hsl(142,69%,49%,0.08),_transparent_70%)]" />
-
-          {/* Center play button */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-5">
+          {/* Play/Pause overlay — fades out when playing, always visible when paused */}
+          <div
+            className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+              playing ? "opacity-0 group-hover:opacity-100" : "opacity-100"
+            }`}
+          >
+            <div className="absolute inset-0 bg-black/30" />
             <motion.div
-              animate={{ scale: hovered ? 1.1 : 1 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="w-20 h-20 rounded-full bg-primary shadow-[0_0_60px_-10px_hsl(142,69%,49%)] flex items-center justify-center"
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative w-20 h-20 rounded-full bg-primary shadow-[0_0_60px_-10px_hsl(142,69%,49%)] flex items-center justify-center"
             >
-              <Play className="w-8 h-8 text-black fill-black ml-1" />
+              {playing ? (
+                <Pause className="w-8 h-8 text-black fill-black" />
+              ) : (
+                <Play className="w-8 h-8 text-black fill-black ml-1" />
+              )}
             </motion.div>
-            <div className="text-center">
-              <div className="text-white font-semibold text-lg">Watch a Real Conversation</div>
-              <div className="text-muted-foreground text-sm mt-1">3 minutes — see a full sales close from first message to payment</div>
-            </div>
-          </div>
-
-          {/* Bottom bar */}
-          <div className="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-t from-black/60 to-transparent flex items-center px-5 gap-3">
-            <div className="flex-1 h-1 rounded-full bg-white/10">
-              <div className="w-0 h-full rounded-full bg-primary" />
-            </div>
-            <span className="text-xs text-zinc-500 font-mono">0:00 / 3:24</span>
           </div>
         </motion.div>
 
