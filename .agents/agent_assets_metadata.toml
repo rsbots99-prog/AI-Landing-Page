@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "bT4q0vXbAv0cTV0BkPKyx"
+uri = "file://closer-ai-netlify.tar.gz"
+type = "unspecified"
+title = "CloserAI — Netlify Deploy Package"

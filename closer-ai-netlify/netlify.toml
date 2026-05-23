@@ -1,0 +1,12 @@
+[build]
+  command = "pnpm --filter @workspace/landing-page run build"
+  publish = "artifacts/landing-page/dist/public"
+  base = "."
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
